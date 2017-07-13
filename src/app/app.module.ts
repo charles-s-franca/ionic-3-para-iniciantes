@@ -14,6 +14,7 @@ import { HttpModule } from "@angular/http"
 import { FeedPageModule } from "../pages/feed/feed.module";
 import { IntroPageModule } from "../pages/intro/intro.module";
 import { MoovieProvider } from '../providers/moovie/moovie';
+import { FeedPage } from "../pages/feed/feed";
 
 @NgModule({
   declarations: [
@@ -21,12 +22,14 @@ import { MoovieProvider } from '../providers/moovie/moovie';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    FeedPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    FeedPageModule,
+    // Importando o módulo de feed
+    // FeedPageModule,
     IntroPageModule,
     HttpModule
   ],
@@ -36,13 +39,14 @@ import { MoovieProvider } from '../providers/moovie/moovie';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    FeedPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MoovieProvider
+    // MoovieProvider
   ]
 })
 export class AppModule {}

@@ -10,11 +10,13 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { NFC, Ndef } from '@ionic-native/nfc';
 import { HttpModule } from "@angular/http"
 import { FeedPageModule } from "../pages/feed/feed.module";
 import { IntroPageModule } from "../pages/intro/intro.module";
 import { MoovieProvider } from '../providers/moovie/moovie';
 import { FeedPage } from "../pages/feed/feed";
+import { NfcProvider } from '../providers/nfc/nfc';
 
 @NgModule({
   declarations: [
@@ -28,8 +30,6 @@ import { FeedPage } from "../pages/feed/feed";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    // Importando o módulo de feed
-    // FeedPageModule,
     IntroPageModule,
     HttpModule
   ],
@@ -46,7 +46,9 @@ import { FeedPage } from "../pages/feed/feed";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    // MoovieProvider
+    NfcProvider,
+    NFC,
+    Ndef
   ]
 })
 export class AppModule {}

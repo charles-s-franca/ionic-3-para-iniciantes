@@ -14,6 +14,7 @@ import { NFC, Ndef } from '@ionic-native/nfc';
 import { HttpModule } from "@angular/http"
 import { FeedPageModule } from "../pages/feed/feed.module";
 import { IntroPageModule } from "../pages/intro/intro.module";
+import { NfcPageModule } from "../pages/nfc/nfc.module";
 import { MoovieProvider } from '../providers/moovie/moovie';
 import { FeedPage } from "../pages/feed/feed";
 import { NfcProvider } from '../providers/nfc/nfc';
@@ -31,7 +32,8 @@ import { NfcProvider } from '../providers/nfc/nfc';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IntroPageModule,
-    HttpModule
+    HttpModule,
+    NfcPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DrinkPage } from "../drink/drink";
+import { NfcPage } from "../nfc/nfc";
 
 @IonicPage()
 @Component({
-  selector: 'page-intro',
-  templateUrl: 'intro.html',
+  selector: 'page-drink',
+  templateUrl: 'drink.html',
 })
-export class IntroPage {
+export class DrinkPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  goToDrinkPage() {
-    this.navCtrl.push(DrinkPage)
+  goToNfcPage() {
+    this.navCtrl.push(NfcPage);
   }
 }

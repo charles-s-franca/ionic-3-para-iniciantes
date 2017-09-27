@@ -10,6 +10,7 @@ import { HttpModule } from "@angular/http"
 import { IntroPageModule } from "../pages/intro/intro.module";
 import { DrinkPageModule } from "../pages/drink/drink.module";
 import { NfcPageModule } from "../pages/nfc/nfc.module";
+import { SuccessPageModule } from "../pages/success/success.module";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NfcPageModule } from "../pages/nfc/nfc.module";
     HttpModule,
     IntroPageModule,
     DrinkPageModule,
-    NfcPageModule
+    NfcPageModule,
+    SuccessPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,7 +1,6 @@
-import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -24,10 +23,8 @@ export class Firedata {
   }
   public posBebidas(): FirebaseListObservable<any[]>{
     return this._af.list('https://barionic-d2888.firebaseio.com/Bebidas')
-    
-   
+
+
 
   }
 }
-
-

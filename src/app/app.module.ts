@@ -15,11 +15,10 @@ import { SuccessPageModule } from "../pages/success/success.module";
 
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 // import { environment } from '../environments/environment';
 //import firebase from 'firebase';
-import * as firebase from 'firebase/app';
 
 const firebaseConfig = {
   // apiKey: "AIzaSyAGv0Wy_3_ua5Z3osmZd10QAprSMGz0GHQ",

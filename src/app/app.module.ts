@@ -12,6 +12,31 @@ import { DrinkPageModule } from "../pages/drink/drink.module";
 import { NfcPageModule } from "../pages/nfc/nfc.module";
 import { SuccessPageModule } from "../pages/success/success.module";
 
+
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+// import { environment } from '../environments/environment';
+//import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+
+const firebaseConfig = {
+  // apiKey: "AIzaSyAGv0Wy_3_ua5Z3osmZd10QAprSMGz0GHQ",
+  // authDomain: "barionic-d2888.firebaseapp.com",
+  // databaseURL: "https://barionic-d2888.firebaseio.com",
+  // projectId: "barionic-d2888",
+  // storageBucket: "barionic-d2888.appspot.com",
+  // messagingSenderId: "115223558925"
+  apiKey: "AIzaSyAGv0Wy_3_ua5Z3osmZd10QAprSMGz0GHQ",
+  authDomain: "barionic-d2888.firebaseapp.com",
+  databaseURL: "https://barionic-d2888.firebaseio.com",
+  projectId: "barionic-d2888",
+  storageBucket: "barionic-d2888.appspot.com",
+  messagingSenderId: "115223558925"
+};
+
+
 @NgModule({
   declarations: [
     MyApp
@@ -23,7 +48,10 @@ import { SuccessPageModule } from "../pages/success/success.module";
     IntroPageModule,
     DrinkPageModule,
     NfcPageModule,
-    SuccessPageModule
+    SuccessPageModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

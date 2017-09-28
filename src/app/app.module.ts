@@ -3,50 +3,59 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { NFC, Ndef } from '@ionic-native/nfc';
 import { HttpModule } from "@angular/http"
-import { FeedPageModule } from "../pages/feed/feed.module";
 import { IntroPageModule } from "../pages/intro/intro.module";
-import { MoovieProvider } from '../providers/moovie/moovie';
-import { FeedPage } from "../pages/feed/feed";
+import { DrinkPageModule } from "../pages/drink/drink.module";
+import { NfcPageModule } from "../pages/nfc/nfc.module";
+import { SuccessPageModule } from "../pages/success/success.module";
+
+
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { environment } from '../environments/environment';
+//import firebase from 'firebase';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAnsLVFrOvB4j7t7mmfwf8Cn5g3KTvUIrE",
+  authDomain: "barionic-bd6fd.firebaseapp.com",
+  databaseURL: "https://barionic-bd6fd.firebaseio.com",
+  projectId: "barionic-bd6fd",
+  storageBucket: "barionic-bd6fd.appspot.com",
+  messagingSenderId: "821987373029"
+};
+
 
 @NgModule({
   declarations: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    FeedPage
+    MyApp
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    // Importando o módulo de feed
-    // FeedPageModule,
+    HttpModule,
     IntroPageModule,
-    HttpModule
+    DrinkPageModule,
+    NfcPageModule,
+    SuccessPageModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    FeedPage
+    MyApp
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    // MoovieProvider
+    NFC,
+    Ndef
   ]
 })
 export class AppModule {}

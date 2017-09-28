@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { TabsPage } from "../tabs/tabs";
+import { DrinkPage } from "../drink/drink";
 
-/**
- * Generated class for the IntroPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-intro',
@@ -15,17 +9,9 @@ import { TabsPage } from "../tabs/tabs";
 })
 export class IntroPage {
 
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IntroPage');
+  goToDrinkPage() {
+    this.navCtrl.push(DrinkPage)
   }
-
-  goToTabsPage(){
-      this.navCtrl.push(TabsPage)
-  }
-
 }

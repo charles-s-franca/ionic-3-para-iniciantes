@@ -21,18 +21,12 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 //import firebase from 'firebase';
 
 const firebaseConfig = {
-  // apiKey: "AIzaSyAGv0Wy_3_ua5Z3osmZd10QAprSMGz0GHQ",
-  // authDomain: "barionic-d2888.firebaseapp.com",
-  // databaseURL: "https://barionic-d2888.firebaseio.com",
-  // projectId: "barionic-d2888",
-  // storageBucket: "barionic-d2888.appspot.com",
-  // messagingSenderId: "115223558925"
-  apiKey: "AIzaSyAGv0Wy_3_ua5Z3osmZd10QAprSMGz0GHQ",
-  authDomain: "barionic-d2888.firebaseapp.com",
-  databaseURL: "https://barionic-d2888.firebaseio.com",
-  projectId: "barionic-d2888",
-  storageBucket: "barionic-d2888.appspot.com",
-  messagingSenderId: "115223558925"
+  apiKey: "AIzaSyAnsLVFrOvB4j7t7mmfwf8Cn5g3KTvUIrE",
+  authDomain: "barionic-bd6fd.firebaseapp.com",
+  databaseURL: "https://barionic-bd6fd.firebaseio.com",
+  projectId: "barionic-bd6fd",
+  storageBucket: "barionic-bd6fd.appspot.com",
+  messagingSenderId: "821987373029"
 };
 
 

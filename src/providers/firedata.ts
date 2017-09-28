@@ -16,13 +16,13 @@ export class Firedata {
     console.log('Hello Firedata Provider');
   }
   public listDrinks(): FirebaseListObservable<any[]>{
-    return this._af.list('https://barionic-d2888.firebaseio.com/listadrinks') // Receita das bebidas
+    return this._af.list('https://barionic-bd6fd.firebaseio.com/listadrinks') // Receita das bebidas
   }
   public filaDrinks(): FirebaseListObservable<any[]>{
-    return this._af.list('https://barionic-d2888.firebaseio.com/fila')
+    return this._af.list('https://barionic-bd6fd.firebaseio.com/fila')
   }
   public posBebidas(): FirebaseListObservable<any[]>{
-    return this._af.list('https://barionic-d2888.firebaseio.com/Bebidas')
+    return this._af.list('https://barionic-bd6fd.firebaseio.com/Bebidas')
 
 
 

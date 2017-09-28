@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Firedata } from './../../providers/firedata';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { NFC, Ndef } from "@ionic-native/nfc";
 import { Subscription } from 'rxjs/Subscription';
@@ -8,11 +9,16 @@ import { SuccessPage } from "../success/success";
 @Component({
   selector: 'page-nfc',
   templateUrl: 'nfc.html',
-  providers: [NFC, Ndef]
+  providers: [NFC, Ndef,Firedata]
 })
 export class NfcPage {
 
   subscriptions: Array<Subscription> = new Array<Subscription>();
+  public lista_drinks 
+  public fila_drinks
+  public pos_bebidas
+  public pos_bebidas_array
+  public item = {} 
 
   constructor(
     public navCtrl: NavController,
@@ -20,11 +26,17 @@ export class NfcPage {
     private nfc: NFC,
     private ndef: Ndef,
     public platform: Platform,
+    public db: Firedata
   ) {
     platform.ready().then(() => {
       this.initNFC();
+      
+      this.lista_drinks = this.db.listDrinks(); // * Lista de Bebidas a serem oferecidas na escolha
+      this.fila_drinks= this.db.filaDrinks() // * Pedidos feito por usuarios
+      this.pos_bebidas= this.db.posBebidas() // * Pedidos feito por usuarios
     });
   }
+  
 
   initNFC() {
     this.nfc.enabled().then(() => {
@@ -50,6 +62,9 @@ export class NfcPage {
       sub.unsubscribe();
     });
   }
+
+
+
 
 
 }

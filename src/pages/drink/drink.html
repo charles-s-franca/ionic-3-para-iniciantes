@@ -64,4 +64,42 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+ <ion-list>
+  <ion-item>
+    <ion-label floating>Item Name</ion-label>
+    <ion-input type="text" [(ngModel)]="item.itemName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Item Description</ion-label>
+    <ion-input type="text" [(ngModel)]="item.itemDescription"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Item Number</ion-label>
+    <ion-input type="number" [(ngModel)]="item.itemNumber"></ion-input>
+  </ion-item>
+</ion-list>
+<button ion-button block color="primary" (click)="saveItem(item)">Add Item</button>
+
+
+
+  <h1>Sua lista de bebida </h1>
+  <ion-list>
+    <ion-item class="text" *ngFor="let item of lista_drinks | async">
+       {{item.title}} <br>
+       {{ item | json }}
+    </ion-item>
+    <h1>Garrafas posicoes </h1>
+    <ion-item class="text" *ngFor="let item of pos_bebidas | async">
+        {{item.$value}} <br>
+        {{ item | json }}
+     </ion-item>
+     <h1> Sua fila de pedidos </h1>
+     <ion-item class="text" *ngFor="let item of fila_drinks | async">
+         {{ item | json }}
+       {{item.$value}}
+   </ion-item>
+ </ion-list>
+
 </ion-content>

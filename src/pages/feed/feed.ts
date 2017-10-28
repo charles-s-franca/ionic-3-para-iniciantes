@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { MoovieProvider } from "../../providers/moovie/moovie";
+import { FilmeDetalhesPage } from '../filme-detalhes/filme-detalhes';
 
 /**
  * Generated class for the FeedPage page.
@@ -27,34 +28,89 @@ export class FeedPage {
   }
 
   public lista_filmes = new Array<any>();
-
+  public page = 1;
 
   public nome_usuario:string = "Charles Franca do Codigo";
+  public loader;
+  public refresher;
+  public isRefreshing: boolean = false;
+  public infiniteScroll;
 
   constructor(
       public navCtrl: NavController, 
       public navParams: NavParams,
-      private movieProvider: MoovieProvider
+      private movieProvider: MoovieProvider,
+      public loadingCtrl: LoadingController
       ) {
+  }
+
+  abreCarregando() {
+    this.loader = this.loadingCtrl.create({
+      content: "Carregando filmes..."
+    });
+    this.loader.present();
+  }
+
+  fechaCarregando(){
+    this.loader.dismiss();
   }
 
   public somaDoisNumeros(num1:number, num2:number): void{
       //alert(num1 + num2);
   }
 
-  ionViewDidLoad() {
-      this.movieProvider.getLatestMovies().subscribe(
-        data=>{
-            
-            const response = (data as any);
-            const objeto_retorno = JSON.parse(response._body);
-            this.lista_filmes = objeto_retorno.results;
+  doRefresh(refresher) {
+    this.refresher = refresher;
+    this.isRefreshing = true;
 
-            console.log(objeto_retorno);
-        }, error => {
-            console.log(error);
-        }
-      )
+    this.carregarFilmes();
+  }
+
+  ionViewDidEnter() {
+    this.carregarFilmes();
+  }
+
+  abrirDetalhes(filme){
+    console.log(filme);
+    this.navCtrl.push(FilmeDetalhesPage, { id: filme.id });
+  }
+
+  doInfinite(infiniteScroll) {
+    this.page++;
+    this.infiniteScroll = infiniteScroll;
+    this.carregarFilmes(true);
+  }
+
+  carregarFilmes(newpage: boolean = false){
+    this.abreCarregando();
+    this.movieProvider.getLatestMovies(this.page).subscribe(
+      data=>{
+          const response = (data as any);
+          const objeto_retorno = JSON.parse(response._body);
+
+          if(newpage){
+            this.lista_filmes = this.lista_filmes.concat(objeto_retorno.results);
+            console.log(this.page);
+            console.log(this.lista_filmes);
+            this.infiniteScroll.complete();
+          }else{
+            this.lista_filmes = objeto_retorno.results;
+          }
+
+          this.fechaCarregando();
+          if(this.isRefreshing){
+              this.refresher.complete();
+              this.isRefreshing = false;
+          }
+      }, error => {
+          console.log(error);
+          this.fechaCarregando();
+          if(this.isRefreshing){
+              this.refresher.complete();
+              this.isRefreshing = false;
+          }
+      }
+    )
   }
 
 }

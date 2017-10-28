@@ -15,6 +15,12 @@ import { FeedPageModule } from "../pages/feed/feed.module";
 import { IntroPageModule } from "../pages/intro/intro.module";
 import { MoovieProvider } from '../providers/moovie/moovie';
 import { FeedPage } from "../pages/feed/feed";
+import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
+import { SobrePageModule } from '../pages/sobre/sobre.module';
+import { PerfilPageModule } from '../pages/perfil/perfil.module';
+import { FilmeDetalhesPageModule } from '../pages/filme-detalhes/filme-detalhes.module';
+import { CartolaProvider } from '../providers/cartola/cartola';
+import { AtletasPageModule } from '../pages/atletas/atletas.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,12 @@ import { FeedPage } from "../pages/feed/feed";
     // Importando o módulo de feed
     // FeedPageModule,
     IntroPageModule,
-    HttpModule
+    HttpModule,
+    ConfiguracoesPageModule,
+    SobrePageModule,
+    PerfilPageModule,
+    FilmeDetalhesPageModule,
+    AtletasPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,6 +57,7 @@ import { FeedPage } from "../pages/feed/feed";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CartolaProvider,
     // MoovieProvider
   ]
 })
